@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 // routes
 require('./app/routes/auth.routes.js')(app);
 require('./app/routes/user.routes.js')(app);
+require('./app/routes/score.routes.js')(app);
 
 const db = require("./app/models");
 const Role = db.role;

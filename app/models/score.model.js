@@ -1,20 +1,17 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("users", {
+  const Score = sequelize.define("score", {
     username: {
       type: DataTypes.STRING
     },
-    email: {
-      type: DataTypes.STRING
-    },
-    password: {
-      type: DataTypes.STRING
+    score: {
+      type: DataTypes.INTEGER
     }
   },
     {
       timestamps: true
     });
 
-  return User;
+  return Score;
 };
