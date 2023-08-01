@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "https://tetris-iym3z58nm-joanesps.vercel.app"
+  origin: "https://tetris-fx2zxjg3l-joanesps.vercel.app"
 };
 
 app.use(cors(corsOptions));

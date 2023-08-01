@@ -1,23 +1,34 @@
 const config = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize(
-  config.DB,
-  config.USER,
-  config.PASSWORD,
-  {
-    host: config.HOST,
-    dialect: config.dialect,
-    operatorsAliases: false,
+// const sequelize = new Sequelize(
+//   config.DB,
+//   config.USER,
+//   config.PASSWORD,
+//   {
+//     host: config.HOST,
+//     dialect: config.dialect,
+//     operatorsAliases: false,
 
-    pool: {
-      max: config.pool.max,
-      min: config.pool.min,
-      acquire: config.pool.acquire,
-      idle: config.pool.idle
-    }
-  }
-);
+//     pool: {
+//       max: config.pool.max,
+//       min: config.pool.min,
+//       acquire: config.pool.acquire,
+//       idle: config.pool.idle
+//     }
+//   }
+// );
+const sequelize = new Sequelize(config.URL, {
+  dialect: 'postgres'
+})
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connexion à la base de données réussie !');
+  })
+  .catch(err => {
+    console.error('Erreur lors de la connexion à la base de données :', err);
+  });
 
 const db = {};
 

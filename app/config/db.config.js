@@ -1,13 +1,3 @@
 module.exports = {
-  HOST: "localhost",
-  USER: "root",
-  PASSWORD: "123456",
-  DB: "tutoauth",
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
+  URL: "postgres://wnvoskte:dx9ZyDWgGLl50SAgjmZ-jyxYq0-r05i_@dumbo.db.elephantsql.com/wnvoskte"
 };
