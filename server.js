@@ -9,18 +9,15 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
 app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// simple route
+// Message d'accueil de base de l'API
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to NGalliere application." });
+  res.json({ message: "Welcome to Tetris API." });
 });
 
-// routes
+// Routes
 require('./app/routes/auth.routes.js')(app);
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/score.routes.js')(app);
@@ -50,7 +47,7 @@ function initial() {
   });
 }
 
-// set port, listen for requests
+// Récupération du port
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

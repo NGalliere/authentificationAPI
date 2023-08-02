@@ -14,18 +14,12 @@ module.exports = function(app) {
     "/api/scores/",
     [authJwt.verifyToken],
     controller.postScore
-);
+  );
 
-  app.get(
-    "/api/scores/",
-    [authJwt.verifyToken],
-    controller.getScores
-);
-
-  app.delete(
-    "/api/scores/",
-    [authJwt.verifyToken],
-    controller.deleteScores
-);
+    app.get(
+      "/api/scores/",
+      [authJwt.verifyToken],
+      controller.getScores
+  );
 
 };

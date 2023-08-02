@@ -8,8 +8,8 @@ const Op = db.Sequelize.Op;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+// Création d'un user
 exports.signup = (req, res) => {
-  // Save User to Database
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -40,6 +40,7 @@ exports.signup = (req, res) => {
     });
 };
 
+// Connexion d'un user
 exports.signin = (req, res) => {
   User.findOne({
     where: {
@@ -64,7 +65,7 @@ exports.signin = (req, res) => {
       }
 
       var token = jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400 // 24 hours
+        expiresIn: 86400 // 24 heures
       });
 
       var authorities = [];

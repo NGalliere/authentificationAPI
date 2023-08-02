@@ -7,7 +7,7 @@ const scoreRepository = db.score
 exports.postScore =(req, res) => {
     if (!req.body.username || !req.body.score) {
         res.status(400).send({
-            message: "Pas d'enregistrement des scores possible"
+            message: "Can't save scores."
         });
         return;
     }
@@ -18,18 +18,18 @@ exports.postScore =(req, res) => {
     })
         .then(
             res.status(201).send({
-                message: `Le score a bien été ajouté.`
+                message: `Score saved.`
             })
         )
         .catch(err => {
             res.status(500).send({
-                message : err.message || "Le serveur ne répond pas."
+                message : err.message || "Server not responding."
             });
         });
 };
 
 
-//Récupération de tous les scores
+// Récupération de tous les scores
 exports.getScores = (req, res) => {
     scoreRepository.findAll({ where: null })
         .then(scores => {
@@ -38,23 +38,7 @@ exports.getScores = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Le serveur ne répond pas."
-            });
-        });
-};
-
-//Suppression de tous les scores
-exports.deleteScores = (req, res) => {
-    scoreRepository.destroy({ where: {}})
-        .then(
-            res.status(200).send({
-                message: `Le tableau des scores a été effacé.`
-            })
-        )
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Le serveur ne répond pas."
+                    err.message || "Server not responding."
             });
         });
 };
